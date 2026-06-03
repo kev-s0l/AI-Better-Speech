@@ -1,0 +1,14 @@
+# Build output
+**/target/
+**/node_modules/
+**/dist/
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Local env / secrets
+.env
+*.env.local
+**/application-local.properties
