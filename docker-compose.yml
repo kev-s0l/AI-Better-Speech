@@ -1,16 +1,16 @@
 services:
   db:
-    image: postgres:16
-    container_name: betterspeech-db
-    restart: unless-stopped
+    image: ####### 
+    container_name: #######
+    restart: #######
     environment:
-      POSTGRES_DB: betterspeech
-      POSTGRES_USER: bsuser
-      POSTGRES_PASSWORD: bspass
+      POSTGRES_DB: #######
+      POSTGRES_USER: #######
+      POSTGRES_PASSWORD: #######
     ports:
-      - "5433:5432"
+      - #######
     volumes:
-      - betterspeech_data:/var/lib/postgresql/data
+      - #######
 
 volumes:
-  betterspeech_data:
+  #######:
