@@ -1,10 +1,10 @@
 package com.betterspeech.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.betterspeech.exception.ResourceNotFoundException;
 import com.betterspeech.model.Prompt;
 import com.betterspeech.repository.PromptRepository;
 
@@ -21,8 +21,9 @@ public class PromptServices {
     return promptRepository.findAll();
    }
 
-   public Optional<Prompt> getPromptbyID(Long id){
-    return promptRepository.findById(id);
+   public Prompt getPromptbyID(Long id){
+    return promptRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Prompt not found: " + id));
    }
 
    public Prompt createPrompt(Prompt prompt){
@@ -30,6 +31,9 @@ public class PromptServices {
    }
 
    public void deletePrompt(Long id){
+      if (!promptRepository.existsById(id)) {
+            throw new ResourceNotFoundException("User not found: " + id);
+        }
     promptRepository.deleteById(id);
    }
     

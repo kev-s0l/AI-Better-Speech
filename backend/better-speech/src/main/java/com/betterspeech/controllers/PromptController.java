@@ -31,9 +31,8 @@ public class PromptController {
     
     @GetMapping("/{id}")
     public ResponseEntity<Prompt> getPromptById(@PathVariable Long id){
-        return promptService.getPromptbyID(id)
-                .map(ResponseEntity::ok) // found prompt
-                .orElse(ResponseEntity.notFound().build()); //prompt does not exist
+        Prompt prompt = promptService.getPromptbyID(id);
+        return ResponseEntity.ok(prompt);
     }
 
     @PostMapping
